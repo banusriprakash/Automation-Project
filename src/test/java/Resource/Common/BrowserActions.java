@@ -2,7 +2,6 @@ package Resource.Common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -191,5 +190,64 @@ public class BrowserActions {
 
     public static void scrollByAmount(int x, int y) {
         getExecutor().executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
+    }
+
+    public static void scrollAndClick(String xpath) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        waitUntilElementVisible(element);
+        getExecutor().executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+        getExecutor().executeScript("arguments[0].click();", element);
+    }
+
+    public static void clickElement(String xpath){
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        getExecutor().executeScript("arguments[0].click();",element);
+    }
+
+    public static void sendText(String xpath, String text) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        waitUntilElementVisible(element);
+        highlight(element);
+        element.clear();
+        element.sendKeys(text);
+    }
+
+    public static void highlight(String xpath) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        getExecutor().executeScript("arguments[0].style.border='3px solid yellow'", element);
+    }
+
+    public static void scrollIntoView(String xpath) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        getExecutor().executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+    }
+
+    public static void waitUntilClickable(String xpath) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        explicitWait().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitUntilNotVisible(String xpath){
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        explicitWait().until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public static void waitUntilElementVisible(String xpath) {
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        explicitWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static void waitUntilPageContain(String text){
+        explicitWait(40).until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//*[contains(text(), '" + text + "')]")
+        ));
+    }
+
+    public static void hardWait(int seconds){
+        try {
+            Thread.sleep(seconds* 1000L);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

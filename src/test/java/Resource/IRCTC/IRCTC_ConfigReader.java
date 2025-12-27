@@ -1,15 +1,18 @@
-package Resource.Common;
+package Resource.IRCTC;
+
+import Resource.Common.Driver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigReader {
+public class IRCTC_ConfigReader {
     static Properties properties;
 
     static {
         try {
-            String path = System.getProperty("user.dir") + "/src/test/java/Data/Web/Amazon/Data.properties";
+
+            String path = System.getProperty("user.dir") + "/src/test/java/Data/Web/IRCTC/IRCTC.properties";
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);
