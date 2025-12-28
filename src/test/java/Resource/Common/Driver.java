@@ -14,41 +14,53 @@ import java.time.Duration;
 public class Driver {
 
     public static final Logger log = LoggerFactory.getLogger(Driver.class);
-    private static WebDriver driver = null;
+    private static volatile WebDriver driver = null;
     public static boolean incognito = true;
 
-    public static WebDriver getDriver(String browserName) {
+     public static WebDriver getDriver(String browserName) {
 
 
         if (driver == null) {
-            switch (browserName.toLowerCase()) {
-                case "chrome":
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    if (incognito) chromeOptions.addArguments("--incognito");
-                    driver = new ChromeDriver(chromeOptions);
-                    break;
+            synchronized (Driver.class){
+                if (browserName.equalsIgnoreCase("")) browserName="chrome";
 
-                case "edge":
-                    EdgeOptions edgeOptions = new EdgeOptions();
-                    if (incognito) edgeOptions.addArguments("--inprivate");
-                    driver = new EdgeDriver(edgeOptions);
-                    break;
+                switch (browserName.toLowerCase()) {
+                    case "chrome":
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.addArguments("--disable-infobars");
+                        chromeOptions.addArguments("--disable-notifications");
+                        chromeOptions.setExperimentalOption("useAutomationExtension", false);
+                        if (incognito) chromeOptions.addArguments("--incognito");
+                        driver = new ChromeDriver(chromeOptions);
+                        break;
 
-                case "firefox":
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    if (incognito) firefoxOptions.addArguments("-private");
-                    driver = new FirefoxDriver(firefoxOptions);
-                    break;
+                    case "edge":
+                        EdgeOptions edgeOptions = new EdgeOptions();
+                        edgeOptions.addArguments("--disable-infobars");
+                        edgeOptions.addArguments("--disable-notifications");
+                        edgeOptions.setExperimentalOption("useAutomationExtension", false);
+                        if (incognito) edgeOptions.addArguments("--inprivate");
+                        driver = new EdgeDriver(edgeOptions);
+                        break;
 
-                default:
-                    log.error("Invalid Browser: {}. Defaulting to Chrome...", browserName);
-                    driver = new ChromeDriver();
+                    case "firefox":
+                        FirefoxOptions firefoxOptions = new FirefoxOptions();
+                        firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+                        firefoxOptions.addPreference("dom.webdriver.enabled", false);
+                        if (incognito) firefoxOptions.addArguments("-private");
+                        driver = new FirefoxDriver(firefoxOptions);
+                        break;
+
+                    default:
+                        log.error("Invalid Browser: {}. Defaulting to Chrome...", browserName);
+                        driver = new ChromeDriver();
+                }
+
+                log.info("Driver initialized successfully for: {}", browserName);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                driver.manage().window().maximize();
             }
-
-            log.info("Driver initialized successfully for: {}", browserName);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-            driver.manage().window().maximize();
-        }
+            }
         return driver;
     }
 

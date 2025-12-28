@@ -1,4 +1,6 @@
-package Resource.Common;
+package Resource.Amazon;
+
+import Resource.Common.Driver;
 
 import java.io.FileInputStream;
 import java.io.IOException;

@@ -2,6 +2,7 @@ package Resource.Common;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -55,23 +56,23 @@ public class BrowserActions {
         explicitWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static void get(String url){
+    public static void get(String url) {
         getDriver().get(url);
     }
 
-    public static String getTitle(){
+    public static String getTitle() {
         return getDriver().getTitle();
     }
 
-    public static void navigateBack(){
+    public static void navigateBack() {
         getDriver().navigate().back();
     }
 
-    public static void navigateForward(){
+    public static void navigateForward() {
         getDriver().navigate().forward();
     }
 
-    public static void refreshPage(){
+    public static void refreshPage() {
         getDriver().navigate().refresh();
 
     }
@@ -80,19 +81,19 @@ public class BrowserActions {
         getExecutor().executeScript("arguments[0].style.border='3px solid yellow'", element);
     }
 
-    public static WebElement findElementByXpath(String xpath){
+    public static WebElement findElementByXpath(String xpath) {
         return getDriver().findElement(By.xpath(xpath));
     }
 
-    public static List<WebElement> findElementsByXpath(String xpath){
+    public static List<WebElement> findElementsByXpath(String xpath) {
         return new ArrayList<>(getDriver().findElements(By.xpath(xpath)));
     }
 
-    public static long findElementsSizeByXpath(String xpath){
+    public static long findElementsSizeByXpath(String xpath) {
         return new ArrayList<>(getDriver().findElements(By.xpath(xpath))).size();
     }
 
-    public static void acceptPopup(){
+    public static void acceptPopup() {
         Alert alert = explicitWait().until(ExpectedConditions.alertIsPresent());
         assert alert != null;
         alert.accept();
@@ -118,7 +119,7 @@ public class BrowserActions {
         }
     }
 
-    public static void switchToWindowByName(String name){
+    public static void switchToWindowByName(String name) {
         getDriver().switchTo().window(name);
     }
 
@@ -127,8 +128,7 @@ public class BrowserActions {
 
         if (index < windowHandles.size() && index >= 0) {
             getDriver().switchTo().window(windowHandles.get(index));
-        }
-        else {
+        } else {
             Driver.log.error("Index {} is out of bounds for open windows.", index);
         }
     }
@@ -137,7 +137,7 @@ public class BrowserActions {
         getDriver().switchTo().newWindow(WindowType.WINDOW);
     }
 
-    public static void openNewTab(){
+    public static void openNewTab() {
         getDriver().switchTo().newWindow(WindowType.TAB);
     }
 
@@ -149,7 +149,7 @@ public class BrowserActions {
 
     public static void captureScreenshot(String fileName) {
         try {
-            if (fileName.equalsIgnoreCase("")) fileName="ScreenShot";
+            if (fileName.equalsIgnoreCase("")) fileName = "ScreenShot";
 
             // 1. Capture the screenshot as a temporary file
             File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
@@ -177,6 +177,7 @@ public class BrowserActions {
             System.err.println("Could not save screenshot: " + e.getMessage());
         }
     }
+
     public static void sendText(WebElement element, String text) {
         waitUntilElementVisible(element);
         highlight(element);
@@ -184,8 +185,8 @@ public class BrowserActions {
         element.sendKeys(text);
     }
 
-    public static void clickElement(WebElement element){
-        getExecutor().executeScript("arguments[0].click();",element);
+    public static void clickElement(WebElement element) {
+        getExecutor().executeScript("arguments[0].click();", element);
     }
 
     public static void scrollByAmount(int x, int y) {
@@ -193,19 +194,19 @@ public class BrowserActions {
     }
 
     public static void scrollAndClick(String xpath) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         waitUntilElementVisible(element);
         getExecutor().executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
         getExecutor().executeScript("arguments[0].click();", element);
     }
 
-    public static void clickElement(String xpath){
-        WebElement element=BrowserActions.findElementByXpath(xpath);
-        getExecutor().executeScript("arguments[0].click();",element);
+    public static void clickElement(String xpath) {
+        WebElement element = BrowserActions.findElementByXpath(xpath);
+        getExecutor().executeScript("arguments[0].click();", element);
     }
 
     public static void sendText(String xpath, String text) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         waitUntilElementVisible(element);
         highlight(element);
         element.clear();
@@ -213,41 +214,70 @@ public class BrowserActions {
     }
 
     public static void highlight(String xpath) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         getExecutor().executeScript("arguments[0].style.border='3px solid yellow'", element);
     }
 
     public static void scrollIntoView(String xpath) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         getExecutor().executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
     }
 
     public static void waitUntilClickable(String xpath) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         explicitWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static void waitUntilNotVisible(String xpath){
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+    public static void waitUntilNotVisible(String xpath) {
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         explicitWait().until(ExpectedConditions.invisibilityOf(element));
     }
 
     public static void waitUntilElementVisible(String xpath) {
-        WebElement element=BrowserActions.findElementByXpath(xpath);
+        WebElement element = BrowserActions.findElementByXpath(xpath);
         explicitWait().until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void waitUntilPageContain(String text){
+    public static void waitUntilPageContain(String text) {
         explicitWait(40).until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//*[contains(text(), '" + text + "')]")
         ));
     }
 
-    public static void hardWait(int seconds){
+    public static void hardWait(int seconds) {
         try {
-            Thread.sleep(seconds* 1000L);
+            Thread.sleep(seconds * 1000L);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+        public static void selectByValue(String xpath, String value) {
+
+            try {
+                WebElement element = BrowserActions.findElementByXpath(xpath);
+                explicitWait().until(ExpectedConditions.elementToBeClickable(element));
+                Select select = new Select(element);
+                select.selectByValue(value);
+            } catch (Exception e) {
+                BrowserActions.captureScreenshot("selection_error");
+                Driver.log.error("Dropdown selection failed for xpath: {}", xpath, e);
+                throw e;
+            }
+        }
+
+        public static void selectByIndex(String xpath, int number) {
+            try {
+                WebElement element = BrowserActions.findElementByXpath(xpath);
+                explicitWait().until(ExpectedConditions.elementToBeClickable(element));
+                Select select = new Select(element);
+                select.selectByIndex(number);
+            } catch (Exception e) {
+                BrowserActions.captureScreenshot("selection_error");
+                Driver.log.error("Dropdown selection failed for xpath: {}", xpath, e);
+                throw e;
+            }
+
+        }
+
 }

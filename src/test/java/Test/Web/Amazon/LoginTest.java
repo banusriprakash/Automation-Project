@@ -1,11 +1,8 @@
 package Test.Web.Amazon;
 
-import Resource.Common.AmazonConfigReader;
+import Resource.Amazon.AmazonConfigReader;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
-import org.openqa.selenium.WebElement;
-
-import java.util.Properties;
 
 public class LoginTest {
 
