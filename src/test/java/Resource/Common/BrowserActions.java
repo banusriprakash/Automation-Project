@@ -280,4 +280,13 @@ public class BrowserActions {
 
         }
 
+        public static void scrollandsendtext(String xpath,String text){
+        WebElement element=BrowserActions.findElementByXpath(xpath);
+        getExecutor().executeScript("arguments[0].scrollIntoView(true);",element);
+        explicitWait().until(ExpectedConditions.visibilityOf(element));
+        highlight(element);
+        element.clear();
+        element.sendKeys(text);
+        }
+
 }
