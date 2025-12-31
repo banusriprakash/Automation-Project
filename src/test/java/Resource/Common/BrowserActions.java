@@ -280,4 +280,11 @@ public class BrowserActions {
 
         }
 
+        public static void selectValue(String value){
+            String xpath = String.format("//li[@aria-label='%s']", value);
+            WebElement element = BrowserActions.findElementByXpath(xpath);
+            explicitWait().until(ExpectedConditions.elementToBeClickable(element));
+            BrowserActions.clickElement(element);
+        }
+
 }

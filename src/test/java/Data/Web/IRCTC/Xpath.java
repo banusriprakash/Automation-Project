@@ -10,8 +10,8 @@ public class Xpath {
     public static final String irctc_xp_from_ip="//input[contains(@aria-label,\"From\")]";
     public static final String irctc_xp_to_ip="//input[contains(@aria-label,\"To\")]";
     public static final String irctc_xp_search_button="//button[contains(text(),\"Search\")]";
-    public static final String irctc_xp_journeyQuota_dropdown="//*[contains(@arialabel,\"Select Journey quota\")]";
-    public static final String irctc_xp_journeyClass_dropdown="//*[contains(@arialabel,\"Select Journey Class\")]";
+    public static final String irctc_xp_journeyQuota_dropdown="(//div[contains(@aria-haspopup,\"listbox\")])[2]";
+    public static final String irctc_xp_journeyClass_dropdown="(//div[contains(@aria-haspopup,\"listbox\")])[1]";
     public static final String irctc_xp_dropdown_answer="(//ul[contains(@role,\"listbox\")]/li)[2]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_

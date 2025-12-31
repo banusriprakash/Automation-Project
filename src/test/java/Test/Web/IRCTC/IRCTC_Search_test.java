@@ -22,6 +22,16 @@ public class IRCTC_Search_test {
         BrowserActions.waitUntilElementVisible(irctc_xp_to_ip);
         BrowserActions.sendText(irctc_xp_to_ip,"Bengaluru");
         BrowserActions.clickElement(irctc_xp_dropdown_answer);
+        BrowserActions.waitUntilClickable(irctc_xp_journeyClass_dropdown);
+        BrowserActions.clickElement(irctc_xp_journeyClass_dropdown);
+        BrowserActions.selectValue("AC First Class (1A) ");
+        BrowserActions.waitUntilClickable(irctc_xp_journeyQuota_dropdown);
+        BrowserActions.clickElement(irctc_xp_journeyQuota_dropdown);
+        BrowserActions.selectValue("LADIES");
+
+        BrowserActions.captureScreenshot(filename);
+        BrowserActions.hardWait(4);
+
         BrowserActions.waitUntilClickable(irctc_xp_search_button);
         BrowserActions.scrollAndClick(irctc_xp_search_button);
         BrowserActions.waitUntilPageContain("JOURNEY CLASS");
