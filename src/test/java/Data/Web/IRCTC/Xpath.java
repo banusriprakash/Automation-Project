@@ -13,6 +13,11 @@ public class Xpath {
     public static final String irctc_xp_journeyQuota_dropdown="(//div[contains(@aria-haspopup,\"listbox\")])[2]";
     public static final String irctc_xp_journeyClass_dropdown="(//div[contains(@aria-haspopup,\"listbox\")])[1]";
     public static final String irctc_xp_dropdown_answer="(//ul[contains(@role,\"listbox\")]/li)[2]";
+    public static final String irctc_xp_register_button="//*[contains(text(),\" REGISTER \")]";
+    public static final String irctc_xp_confirmpassword_ip="//input[contains(@placeholder,\"Confirm Password\")]";
+    public static final String irctc_xp_fullname_ip="//input[contains(@placeholder,\"Full Name\")]";
+    public static final String irctc_xp_mobile_ip="//input[contains(@placeholder,\"Mobile\")]";
+    public static final String irctc_xp_email_ip="//input[contains(@placeholder,\"Email\")]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
@@ -22,4 +27,9 @@ public class Xpath {
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
+//    public static final String irctc_xp_
+//    public static final String irctc_xp_
+//    public static final String irctc_xp_
+//    public static final String irctc_xp_
+
 }
