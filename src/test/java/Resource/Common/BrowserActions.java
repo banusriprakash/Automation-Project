@@ -296,4 +296,19 @@ public class BrowserActions {
         element.sendKeys(text);
         }
 
+        public static String getText(String xpath){
+            WebElement element=BrowserActions.findElementByXpath(xpath);
+            explicitWait().until(ExpectedConditions.visibilityOf(element));
+            return element.getText();
+        }
+
+    public static void pageShouldContain(String text) {
+        WebElement element = getDriver().findElement(
+                By.xpath("//*[contains(text(),'" + text + "')]")
+        );
+        getExecutor().executeScript("arguments[0].scrollIntoView(true);", element);
+        explicitWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
+
 }

@@ -18,8 +18,8 @@ public class Xpath {
     public static final String irctc_xp_fullname_ip="//input[contains(@placeholder,\"Full Name\")]";
     public static final String irctc_xp_mobile_ip="//input[contains(@placeholder,\"Mobile\")]";
     public static final String irctc_xp_email_ip="//input[contains(@placeholder,\"Email\")]";
-//    public static final String irctc_xp_
-//    public static final String irctc_xp_
+    public static final String irctc_xp_agent_login="//a/child::span[contains(@aria-label,\"Agents\")]";
+    public static final String irctc_xp_agree_button ="//span[contains(text(),\"I Agree\")]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
