@@ -15,7 +15,6 @@ public class LoginTest {
         BrowserActions.clickElement("//span[contains(text(),'sign in')]");
         BrowserActions.sendText("//input[contains(@aria-label,'email')]",AmazonConfigReader.getProperty("username"));
         BrowserActions.clickElement("//input[contains(@aria-labelledby,'continue')]");
-        BrowserActions.dismissPopup();
 //        BrowserActions.waitUntilElementVisible("//input[contains(@id,\"ap_password\")]");
 //        BrowserActions.sendText("//input[contains(@id,\"ap_password\")]",AmazonConfigReader.getProperty("password"));
 //        BrowserActions.waitUntilClickable("(//span[contains(text(),'Sign in')])[1]");
