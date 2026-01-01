@@ -6,11 +6,12 @@ import Resource.IRCTC.IRCTC_ConfigReader;
 import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
-@Test
+
 public class IRCTCSearchTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"_search";
     static String url=IRCTC_ConfigReader.getProperty("url");
 
+    @Test
     public static void SearchTest(){
         Driver.getDriver("chrome");
 

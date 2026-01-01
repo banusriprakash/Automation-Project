@@ -7,7 +7,7 @@ import Resource.IRCTC.IRCTC_ConfigReader;
 import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
-@Test
+
 public class IRCTCLoginTest {
 
     static String filename=IRCTC_ConfigReader.getProperty("screenshotname");

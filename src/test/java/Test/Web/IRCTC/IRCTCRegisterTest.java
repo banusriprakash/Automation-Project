@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 
 
 import static Data.Web.IRCTC.Xpath.*;
-@Test
+
 public class IRCTCRegisterTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"_register";
     static String url=IRCTC_ConfigReader.getProperty("url");
-
+    @Test
     public static void RegisterTest(){
         Driver.getDriver("chrome");
 
