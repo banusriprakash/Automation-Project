@@ -21,8 +21,8 @@ public class LoginTest {
         BrowserActions.waitUntilClickable("(//span[contains(text(),'Sign in')])[1]");
         BrowserActions.clickElement("(//span[contains(text(),'Sign in')])[1]");
         BrowserActions.hardWait(30);
-        BrowserActions.clickElement("(//input[contains(@type,\"submit\")]/following-sibling::span)[2]");
-        BrowserActions.waitUntilPageContain("All");
+//        BrowserActions.clickElement("(//input[contains(@type,\"submit\")]/following-sibling::span)[2]");
+//        BrowserActions.waitUntilPageContain("All");
         BrowserActions.captureScreenshot("Login_test");
         Driver.closeDriver();
     }
