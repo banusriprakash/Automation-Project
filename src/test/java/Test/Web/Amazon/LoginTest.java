@@ -3,10 +3,11 @@ package Test.Web.Amazon;
 import Resource.Amazon.AmazonConfigReader;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
+import org.testng.annotations.Test;
 
 public class LoginTest {
-
-    public static void main(String[] args) {
+    @Test
+    public void loginTest(){
         Driver.getDriver("Chrome");
 
         BrowserActions.get(AmazonConfigReader.getProperty("url"));
@@ -24,6 +25,5 @@ public class LoginTest {
         BrowserActions.waitUntilPageContain("All");
         BrowserActions.captureScreenshot("Login_test");
         Driver.closeDriver();
-
     }
 }
