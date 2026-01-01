@@ -16,7 +16,7 @@ public class IRCTCRegisterTest {
         Driver.getDriver("chrome");
 
         BrowserActions.get(url);
-
+        BrowserActions.waitUntilClickable(irctc_xp_ok_button);
         BrowserActions.clickElement(irctc_xp_ok_button);
 
         BrowserActions.waitUntilClickable(irctc_xp_register_button);
