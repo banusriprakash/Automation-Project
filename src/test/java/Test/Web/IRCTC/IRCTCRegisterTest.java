@@ -11,8 +11,8 @@ import static Data.Web.IRCTC.Xpath.*;
 public class IRCTCRegisterTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"_register";
     static String url=IRCTC_ConfigReader.getProperty("url");
-    public static void main(String[] args) {
 
+    public static void RegisterTest(){
         Driver.getDriver("chrome");
 
         BrowserActions.get(url);
@@ -38,6 +38,5 @@ public class IRCTCRegisterTest {
 
 
         BrowserActions.captureScreenshot(filename);
-
     }
 }
