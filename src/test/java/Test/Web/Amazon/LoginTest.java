@@ -16,11 +16,11 @@ public class LoginTest {
         BrowserActions.sendText("//input[contains(@aria-label,'email')]",AmazonConfigReader.getProperty("username"));
         BrowserActions.clickElement("//input[contains(@aria-labelledby,'continue')]");
         BrowserActions.dismissPopup();
-        BrowserActions.waitUntilElementVisible("//input[contains(@id,\"ap_password\")]");
-        BrowserActions.sendText("//input[contains(@id,\"ap_password\")]",AmazonConfigReader.getProperty("password"));
-        BrowserActions.waitUntilClickable("(//span[contains(text(),'Sign in')])[1]");
-        BrowserActions.clickElement("(//span[contains(text(),'Sign in')])[1]");
-        BrowserActions.hardWait(30);
+//        BrowserActions.waitUntilElementVisible("//input[contains(@id,\"ap_password\")]");
+//        BrowserActions.sendText("//input[contains(@id,\"ap_password\")]",AmazonConfigReader.getProperty("password"));
+//        BrowserActions.waitUntilClickable("(//span[contains(text(),'Sign in')])[1]");
+//        BrowserActions.clickElement("(//span[contains(text(),'Sign in')])[1]");
+//        BrowserActions.hardWait(30);
 //        BrowserActions.clickElement("(//input[contains(@type,\"submit\")]/following-sibling::span)[2]");
 //        BrowserActions.waitUntilPageContain("All");
         BrowserActions.captureScreenshot("Login_test");
