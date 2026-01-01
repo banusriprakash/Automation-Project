@@ -11,7 +11,7 @@ public class IRCTCAgentLoginTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"AgentLogin";
     static String url=IRCTC_ConfigReader.getProperty("url");
     @Test
-    public static void AgentLoginTest(){
+    public void AgentLoginTest(){
         Driver.getDriver("chrome");
 
         BrowserActions.get(url);

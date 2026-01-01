@@ -12,7 +12,7 @@ public class IRCTCSearchTest {
     static String url=IRCTC_ConfigReader.getProperty("url");
 
     @Test
-    public static void SearchTest(){
+    public  void SearchTest(){
         Driver.getDriver("chrome");
 
         BrowserActions.get(url);

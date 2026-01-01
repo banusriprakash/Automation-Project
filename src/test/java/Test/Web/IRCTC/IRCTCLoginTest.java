@@ -15,7 +15,7 @@ public class IRCTCLoginTest {
     static String username= CredentialEncoder.decode(IRCTC_ConfigReader.getProperty("username"));
     static String password=CredentialEncoder.decode(IRCTC_ConfigReader.getProperty("password"));
     @Test
-    public static void loginTest(){
+    public void loginTest(){
         Driver.getDriver("chrome");
 
         BrowserActions.get(url);
