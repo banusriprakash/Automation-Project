@@ -4,10 +4,10 @@ import Library.CredentialEncoder;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
 import Resource.IRCTC.IRCTC_ConfigReader;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
-
 public class IRCTCLoginTest {
 
     static String filename=IRCTC_ConfigReader.getProperty("screenshotname");

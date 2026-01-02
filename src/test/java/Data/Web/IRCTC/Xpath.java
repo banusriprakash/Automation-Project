@@ -20,7 +20,7 @@ public class Xpath {
     public static final String irctc_xp_email_ip="//input[contains(@placeholder,\"Email\")]";
     public static final String irctc_xp_agent_login="//a/child::span[contains(@aria-label,\"Agents\")]";
     public static final String irctc_xp_agree_button ="//span[contains(text(),\"I Agree\")]";
-//    public static final String irctc_xp_
+    public static final String irctc_xp_contact_us_button ="//*[contains(text(),\" CONTACT US \")]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_

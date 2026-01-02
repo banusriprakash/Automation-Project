@@ -1,22 +1,29 @@
 package Resource.Common;
 
+import io.cucumber.java.bs.A;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 public class BrowserActions {
 
@@ -94,9 +101,19 @@ public class BrowserActions {
     }
 
     public static void acceptPopup() {
-        Alert alert = explicitWait().until(ExpectedConditions.alertIsPresent());
-        assert alert != null;
-        alert.accept();
+        try {
+            Alert alert = explicitWait()
+                    .until(ExpectedConditions.alertIsPresent());
+
+            assert alert != null;
+            alert.accept();
+        } catch (TimeoutException e) {
+            BrowserActions.captureScreenshot("Alert_Not_Present");
+            throw new RuntimeException("Alert was not present", e);
+        } catch (UnhandledAlertException e) {
+            BrowserActions.captureScreenshot("Unhandled_Alert");
+            throw e;
+        }
     }
 
     public static void dismissPopup() {
@@ -302,13 +319,47 @@ public class BrowserActions {
             return element.getText();
         }
 
-    public static void pageShouldContain(String text) {
-        WebElement element = getDriver().findElement(
-                By.xpath("//*[contains(text(),'" + text + "')]")
-        );
-        getExecutor().executeScript("arguments[0].scrollIntoView(true);", element);
-        explicitWait().until(ExpectedConditions.visibilityOf(element));
-    }
+        public static void pageShouldContain(String text) {
+            WebElement element = getDriver().findElement(
+                    By.xpath("//*[contains(normalize-space(text()),'" + text + "')]")
+            );
+            explicitWait().until(ExpectedConditions.visibilityOf(element));
+            getExecutor().executeScript("arguments[0].scrollIntoView(true);", element);
 
+        }
+
+        public static void pressPageDown(int number){
+            Actions action=new Actions(getDriver());
+            for (int i = 0; i < number; i++) {
+                action.sendKeys(Keys.PAGE_DOWN).perform();
+            }
+        }
+
+        public static void pressPageUp(int number){
+            Actions actions=new Actions(getDriver());
+
+            for (int i = 0; i < number; i++) {
+                actions.sendKeys(Keys.PAGE_UP).perform();
+            }
+        }
+
+        public static void pressLeftArrow(int number){
+            Actions actions=new Actions(getDriver());
+            for (int i = 0; i < number; i++) {
+                actions.sendKeys(Keys.ARROW_LEFT).perform();
+            }
+        }
+
+        public static void pressRightArrow(int number){
+            Actions actions=new Actions(getDriver());
+            for (int i = 0; i < number; i++) {
+                actions.sendKeys(Keys.ARROW_RIGHT).perform();
+            }
+        }
+
+        public static void pressEnterKey(){
+            Actions actions=new Actions(getDriver());
+            actions.sendKeys(Keys.ENTER).perform();
+        }
 
 }
