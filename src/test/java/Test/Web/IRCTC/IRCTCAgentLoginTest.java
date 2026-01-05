@@ -17,6 +17,8 @@ public class IRCTCAgentLoginTest {
         BrowserActions.get(url);
 
         BrowserActions.clickElement(irctc_xp_ok_button);
+        BrowserActions.waitUntilElementVisible(irctc_xp_login_button);
+        BrowserActions.clickElement(irctc_xp_login_button);
         BrowserActions.pageShouldContain("AGENT LOGIN");
         BrowserActions.clickElement(irctc_xp_agent_login);
         BrowserActions.waitUntilClickable(irctc_xp_agree_button);

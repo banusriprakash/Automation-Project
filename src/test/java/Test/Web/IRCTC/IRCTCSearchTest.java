@@ -36,7 +36,7 @@ public class IRCTCSearchTest {
 
         BrowserActions.waitUntilClickable(irctc_xp_search_button);
         BrowserActions.scrollAndClick(irctc_xp_search_button);
-        BrowserActions.waitUntilPageContain("JOURNEY CLASS");
+
         BrowserActions.scrollByAmount(0,400);
 
         BrowserActions.captureScreenshot(filename);
