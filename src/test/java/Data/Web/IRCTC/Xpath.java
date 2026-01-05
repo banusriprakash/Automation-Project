@@ -21,8 +21,8 @@ public class Xpath {
     public static final String irctc_xp_agent_login="//label[contains(text(),\"AGENT LOGIN\")]";
     public static final String irctc_xp_agree_button ="//span[contains(text(),\"I Agree\")]";
     public static final String irctc_xp_contact_us_button ="//*[contains(text(),\" CONTACT US \")]";
-//    public static final String irctc_xp_
-//    public static final String irctc_xp_
+    public static final String irctc_xp_ask_diksha="//span[contains(normalize-space(),\"Ask Disha ChatBot\")]";
+    public static final String irctc_xp_service_ask_diksha="//a[contains(normalize-space(),\"Services of Ask Disha ChatBot\")]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
