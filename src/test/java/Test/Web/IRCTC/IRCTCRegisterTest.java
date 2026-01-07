@@ -20,7 +20,8 @@ public class IRCTCRegisterTest {
         BrowserActions.get(url);
         BrowserActions.waitUntilClickable(irctc_xp_ok_button);
         BrowserActions.clickElement(irctc_xp_ok_button);
-
+        BrowserActions.clickElement(irctc_xp_login_button);
+        BrowserActions.pageShouldContain("Login");
         BrowserActions.waitUntilClickable(irctc_xp_register_button);
         BrowserActions.clickElement(irctc_xp_register_button);
 
