@@ -26,6 +26,16 @@ public class Xpath {
     public static final String irctc_xp_ok_alert="//label[contains(@id,\"undefined\")]/ancestor::div[contains(@aria-labelledby,\"ui-dialog-1-label\")]";
     public static final String irctc_xp_global_tab = "//a[contains(normalize-space(text()),'%s')]";
     public static final String irctc_xp_book_food="//span[contains(text(),'Book Food')]";
+    public static final String irctc_xp_date="//p-calendar[@id='jDate']//input";
+    public static final String irctc_xp_calendar_month = "//span[contains(@class,'ui-datepicker-month')]";
+    public static final String irctc_xp_calendar_year = "//span[contains(@class,'ui-datepicker-year')]";
+    public static final String irctc_xp_date_next = "//a[contains(@class,'ui-datepicker-next')]";
+    public static final String irctc_xp_date_previous = "//a[contains(@class,'ui-datepicker-prev')]";
+    // Dynamic XPath for selecting the specific day
+    public static final String irctc_xp_select_day = "//a[text()='%s']";
+//    public static final String irctc_xp_
+//    public static final String irctc_xp_
+//    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
