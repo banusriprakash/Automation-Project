@@ -16,7 +16,9 @@ public class IRCTCLoginTest {
     static String password=CredentialEncoder.decode(IRCTC_ConfigReader.getProperty("password"));
     @Test
     public void loginTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
+
+
 
         BrowserActions.get(url);
         BrowserActions.clickElement(irctc_xp_ok_button);
@@ -30,6 +32,6 @@ public class IRCTCLoginTest {
         BrowserActions.waitUntilClickable(irctc_xp_signin_button);
         BrowserActions.scrollAndClick(irctc_xp_signin_button);
         BrowserActions.captureScreenshot(filename);
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

@@ -13,7 +13,9 @@ public class IRCTCRegisterTest {
     static String url=IRCTC_ConfigReader.getProperty("url");
     @Test
     public void RegisterTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
+
+
 
         BrowserActions.get(url);
         BrowserActions.waitUntilClickable(irctc_xp_ok_button);
@@ -38,5 +40,6 @@ public class IRCTCRegisterTest {
 
 
         BrowserActions.captureScreenshot(filename);
+        Driver.quitDriver();
     }
 }

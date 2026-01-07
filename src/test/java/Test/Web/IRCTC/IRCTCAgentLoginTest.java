@@ -12,7 +12,7 @@ public class IRCTCAgentLoginTest {
     static String url=IRCTC_ConfigReader.getProperty("url");
     @Test
     public void AgentLoginTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
 
         BrowserActions.get(url);
 
@@ -25,6 +25,6 @@ public class IRCTCAgentLoginTest {
 
         BrowserActions.captureScreenshot(filename);
 
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

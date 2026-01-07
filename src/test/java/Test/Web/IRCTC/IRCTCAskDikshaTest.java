@@ -14,7 +14,9 @@ public class IRCTCAskDikshaTest {
 
     @Test
     public void askDikshaTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
+        Driver.getDriver();
+
 
         BrowserActions.get(url);
 
@@ -29,6 +31,6 @@ public class IRCTCAskDikshaTest {
 
         BrowserActions.captureScreenshot(file);
 
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

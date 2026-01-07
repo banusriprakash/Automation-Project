@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 public class LoginTest {
     @Test
     public void loginTest(){
-        Driver.getDriver("Chrome");
+        Driver.initDriver("Edge");
+        Driver.getDriver();
 
         BrowserActions.get(AmazonConfigReader.getProperty("url"));
         BrowserActions.waitUntilElementVisible("//span[contains(text(),'sign in')]");
@@ -23,6 +24,6 @@ public class LoginTest {
 //        BrowserActions.clickElement("(//input[contains(@type,\"submit\")]/following-sibling::span)[2]");
 //        BrowserActions.waitUntilPageContain("All");
         BrowserActions.captureScreenshot("Login_test");
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

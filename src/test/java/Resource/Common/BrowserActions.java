@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.io.File;
@@ -25,10 +28,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
+import static Data.Web.IRCTC.Xpath.irctc_xp_global_tab;
+import static Data.Web.IRCTC.Xpath.irctc_xp_ok_button;
+
 public class BrowserActions {
+    public static final Logger log = LoggerFactory.getLogger(BrowserActions.class);
 
     private static WebDriver getDriver() {
-        return Driver.getDriver(null);
+        return Driver.getDriver();
     }
 
     public static WebDriverWait explicitWait(int seconds) {
@@ -361,5 +368,28 @@ public class BrowserActions {
             Actions actions=new Actions(getDriver());
             actions.sendKeys(Keys.ENTER).perform();
         }
+
+        public static void handleIfAlertPresent(String xpath){
+        try {
+            WebElement element= explicitWait().until(
+                    ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))
+            );
+            if (element!=null){
+                BrowserActions.clickElement(irctc_xp_ok_button);
+            }
+        }
+
+            catch (TimeoutException e) {
+                // Log that alert didn't appear and move on
+                System.out.println("No alert appeared within timeout.");
+                BrowserActions.captureScreenshot("Error_Alert_is_not_Present");
+                log.error("{} is not Visible", xpath);
+        }
+    }
+
+    public static String replaceXpath(String xpath, String... values){
+        return String.format(xpath, (Object[]) values);
+    }
+
 
 }

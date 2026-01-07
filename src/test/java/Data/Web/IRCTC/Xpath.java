@@ -23,9 +23,9 @@ public class Xpath {
     public static final String irctc_xp_contact_us_button ="//*[contains(text(),\" CONTACT US \")]";
     public static final String irctc_xp_ask_diksha="//span[contains(normalize-space(),\"Ask Disha ChatBot\")]";
     public static final String irctc_xp_service_ask_diksha="//a[contains(normalize-space(),\"Services of Ask Disha ChatBot\")]";
-//    public static final String irctc_xp_
-//    public static final String irctc_xp_
-//    public static final String irctc_xp_
+    public static final String irctc_xp_ok_alert="//label[contains(@id,\"undefined\")]/ancestor::div[contains(@aria-labelledby,\"ui-dialog-1-label\")]";
+    public static final String irctc_xp_global_tab = "//a[contains(normalize-space(text()),'%s')]";
+    public static final String irctc_xp_book_food="//span[contains(text(),'Book Food')]";
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_
 //    public static final String irctc_xp_

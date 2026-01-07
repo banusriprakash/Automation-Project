@@ -13,7 +13,9 @@ public class IRCTCSearchTest {
 
     @Test
     public  void SearchTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
+
+
 
         BrowserActions.get(url);
 
@@ -41,6 +43,6 @@ public class IRCTCSearchTest {
 
         BrowserActions.captureScreenshot(filename);
 
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

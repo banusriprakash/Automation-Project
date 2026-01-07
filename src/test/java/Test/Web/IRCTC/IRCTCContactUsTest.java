@@ -12,7 +12,8 @@ public class IRCTCContactUsTest {
     static String url=IRCTC_ConfigReader.getProperty("url");
     @Test
     public void contactusTest(){
-        Driver.getDriver("chrome");
+        Driver.initDriver("Edge");
+
 
         BrowserActions.get(url);
 
@@ -23,9 +24,9 @@ public class IRCTCContactUsTest {
         BrowserActions.clickElement(irctc_xp_contact_us_button);
         BrowserActions.switchToWindowByIndex(1);
         BrowserActions.pageShouldContain("You may contact us");
-        BrowserActions.captureScreenshot(filename);
+        Driver.quitDriver();
 
 
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }
