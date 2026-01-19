@@ -225,8 +225,14 @@ public class BrowserActions {
     }
 
     public static void clickElement(String xpath) {
-        WebElement element = BrowserActions.findElementByXpath(xpath);
-        getExecutor().executeScript("arguments[0].click();", element);
+        try{
+            WebElement element = BrowserActions.findElementByXpath(xpath);
+            getExecutor().executeScript("arguments[0].click();", element);
+        }
+        catch (Exception e){
+            BrowserActions.captureScreenshot("Error_Occured_during_click");
+        }
+
     }
 
     public static void sendText(String xpath, String text) {
@@ -391,5 +397,41 @@ public class BrowserActions {
         return String.format(xpath, (Object[]) values);
     }
 
+    public static WebElement findWebElementByTag(String tagName){
+        WebElement element=null;
+        try {
+            element=getDriver().findElement(By.tagName(tagName));
 
+        }
+        catch (Exception e){
+            BrowserActions.captureScreenshot("Error_finding_WebElement");
+        }
+        return element;
+    }
+
+    public static WebElement findWebElementByCss(String cssSelector){
+        WebElement element=null;
+        try {
+            element=getDriver().findElement(By.cssSelector(cssSelector));
+        }
+        catch (Exception e){
+            BrowserActions.captureScreenshot("Error_finding_WebElement");
+        }
+        return element;
+    }
+
+    public static WebElement findWebElementById(String id){
+        WebElement element=null;
+        try {
+            element=getDriver().findElement(By.id(id));
+        }
+        catch (Exception e){
+            BrowserActions.captureScreenshot("Error_finding_WebElement");
+        }
+        return element;
+    }
+    public static WebElement findShadowElement(String hostCss, String innerCss) {
+        String script = String.format("return document.querySelector('%s').shadowRoot.querySelector('%s')", hostCss, innerCss);
+        return (WebElement) getExecutor().executeScript(script);
+    }
 }
