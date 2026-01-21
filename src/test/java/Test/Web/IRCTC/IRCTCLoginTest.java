@@ -1,6 +1,7 @@
 package Test.Web.IRCTC;
 
 import Library.CredentialEncoder;
+import Resource.Common.BaseTest;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
 import Resource.IRCTC.IRCTC_ConfigReader;
@@ -8,15 +9,15 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
-public class IRCTCLoginTest {
+public class IRCTCLoginTest extends BaseTest {
 
     static String filename=IRCTC_ConfigReader.getProperty("screenshotname");
     static String url=IRCTC_ConfigReader.getProperty("url");
     static String username= CredentialEncoder.decode(IRCTC_ConfigReader.getProperty("username"));
     static String password=CredentialEncoder.decode(IRCTC_ConfigReader.getProperty("password"));
+    static String browser=IRCTC_ConfigReader.getProperty("browser");
     @Test
     public void loginTest(){
-        Driver.initDriver("Edge");
 
 
 
@@ -32,6 +33,6 @@ public class IRCTCLoginTest {
         BrowserActions.waitUntilClickable(irctc_xp_signin_button);
         BrowserActions.scrollAndClick(irctc_xp_signin_button);
         BrowserActions.captureScreenshot(filename);
-        Driver.quitDriver();
+
     }
 }

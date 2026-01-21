@@ -1,5 +1,6 @@
 package Test.Web.IRCTC;
 
+import Resource.Common.BaseTest;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
 import Resource.IRCTC.IRCTC_ConfigReader;
@@ -7,12 +8,13 @@ import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
 
-public class IRCTCMealTest {
+public class IRCTCMealTest extends BaseTest {
     static String url= IRCTC_ConfigReader.getProperty("url");
     static String file=IRCTC_ConfigReader.getProperty("screenshotname")+"meals";
+    static String browser=IRCTC_ConfigReader.getProperty("browser");
     @Test
     public void mealTest(){
-        Driver.initDriver("chrome");
+
         BrowserActions.get(url);
         BrowserActions.handleIfAlertPresent(irctc_xp_ok_alert);
 
@@ -27,6 +29,6 @@ public class IRCTCMealTest {
         BrowserActions.clickElement(irctc_xp_book_food);
 
         BrowserActions.captureScreenshot(file);
-        Driver.quitDriver();
+
     }
 }

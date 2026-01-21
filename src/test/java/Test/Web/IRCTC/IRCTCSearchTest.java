@@ -1,5 +1,6 @@
 package Test.Web.IRCTC;
 
+import Resource.Common.BaseTest;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
 import Resource.IRCTC.IRCTC_ConfigReader;
@@ -7,13 +8,12 @@ import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
 
-public class IRCTCSearchTest {
+public class IRCTCSearchTest extends BaseTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"_search";
     static String url=IRCTC_ConfigReader.getProperty("url");
-
+    static String browser=IRCTC_ConfigReader.getProperty("browser");
     @Test
     public  void SearchTest(){
-        Driver.initDriver("Edge");
 
 
 
@@ -43,6 +43,5 @@ public class IRCTCSearchTest {
 
         BrowserActions.captureScreenshot(filename);
 
-        Driver.quitDriver();
     }
 }

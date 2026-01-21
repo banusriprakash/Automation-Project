@@ -1,5 +1,6 @@
 package Test.Web.IRCTC;
 
+import Resource.Common.BaseTest;
 import Resource.Common.BrowserActions;
 import Resource.Common.Driver;
 import Resource.IRCTC.IRCTC_ConfigReader;
@@ -7,12 +8,13 @@ import org.testng.annotations.Test;
 
 import static Data.Web.IRCTC.Xpath.*;
 
-public class IRCTCAgentLoginTest {
+public class IRCTCAgentLoginTest extends BaseTest {
     static String filename= IRCTC_ConfigReader.getProperty("screenshotname")+"AgentLogin";
     static String url=IRCTC_ConfigReader.getProperty("url");
+    static String browser=IRCTC_ConfigReader.getProperty("browser");
     @Test
     public void AgentLoginTest(){
-        Driver.initDriver("Edge");
+
 
         BrowserActions.get(url);
 
